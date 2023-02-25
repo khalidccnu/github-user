@@ -61,46 +61,46 @@ let displayUser = user => {
             <div class="card-body">
                 <div class="d-flex flex-column flex-md-row justify-content-between">
                     <div>
-                        <h5 class="card-title mb-0">${user.name}</h5>
-                        <small>${user.login}</small>
+                        <h5 class="card-title mb-0">${user.name == null ? "Anonymous" : user.name}</h5>
+                        <small class="text-muted">${user.login}</small>
                     </div>
-                    <div>Joined ${date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear()}</div>
+                    <div class="text-dark-emphasis">Joined ${date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear()}</div>
                 </div>
-                <p class="card-text mt-3">${user.bio}</p>
+                <p class="card-text mt-3 text-dark">${user.bio == null ? "Not set yet" : user.bio}</p>
                 <div class="card bg-secondary-subtle">
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-around">
-                            <li class="d-flex flex-column fw-bold">
-                                <span>Repos</span>
-                                <span class="fs-5">${user.public_repos}</span>
+                            <li class="d-flex flex-column">
+                                <span class="fw-medium">Repos</span>
+                                <span class="fw-bold fs-5">${user.public_repos}</span>
                             </li>
-                            <li class="d-flex flex-column fw-bold">
-                                <span>Followers</span>
-                                <span class="fs-5">${user.followers}</span>
+                            <li class="d-flex flex-column">
+                                <span class="fw-medium">Followers</span>
+                                <span class="fw-bold fs-5">${user.followers}</span>
                             </li>
-                            <li class="d-flex flex-column fw-bold">
-                                <span>Following</span>
-                                <span class="fs-5">${user.following}</span>
+                            <li class="d-flex flex-column">
+                                <span class="fw-medium">Following</span>
+                                <span class="fw-bold fs-5">${user.following}</span>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-3 text-dark-emphasis">
                     <div class="col-12 col-sm-6">
                         <i class='bx bx-location-plus'></i>
-                        <span>${user.location}</span>
+                        <span>${user.location == null ? "Not set yet" : user.location}</span>
                     </div>
                     <div class="col-12 col-sm-6">
                         <i class='bx bxl-twitter'></i>
-                        <span>${user.twitter_username}</span>
+                        <span>${user.twitter_username == null ? "Not set yet" : user.twitter_username}</span>
                     </div>
                     <div class="col-12 col-sm-6">
                         <i class='bx bx-link'></i>
-                        <span>${user.blog}</span>
+                        <span>${user.blog === "" ? "Not set yet" : user.blog}</span>
                     </div>
                     <div class="col-12 col-sm-6">
                         <i class='bx bx-building'></i>
-                        <span>${user.company}</span>
+                        <span>${user.company == null ? "Not set yet" : user.company}</span>
                     </div>
                 </div>
             </div>
