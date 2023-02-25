@@ -1,3 +1,5 @@
+let userArea = document.querySelector("#user .container");
+
 // check username valid or not
 let isValid = username => {
     if (username.trim() === "" || !username.charAt(0).match(/[a-z]/)) {
@@ -13,7 +15,22 @@ let isValid = username => {
 
 // check user exist or not
 let isExist = obj => {
-    if (obj.message === "Not Found") return false;
+    userArea.innerHTML = "";
+
+    if (obj.message === "Not Found") {
+        let alert = document.createElement("div");
+
+        alert.classList.add("non-exist", "alert", "alert-warning", "mt-4", "mx-auto");
+        alert.setAttribute("role", "alert");
+        alert.style.maxWidth = "30rem";
+        alert.innerText = "No user was found to match your search.";
+
+        userArea.appendChild(alert);
+
+        return false;
+    } else {
+        return true;
+    }
 }
 
 // get details from user
@@ -28,10 +45,9 @@ let getUserDetails = username => {
 
 // display user
 let displayUser = user => {
-    let userArea = document.querySelector("#user .container");
-    let userCard = document.createElement("div");
     let date = new Date(user.created_at);
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let userCard = document.createElement("div");
 
     userCard.classList.add("user-card", "card", "mt-4", "mx-auto");
     userCard.innerHTML = `
