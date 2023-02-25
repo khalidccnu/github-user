@@ -7,3 +7,12 @@
 .search-card {
     max-width: 30rem;
 }
+
+/* ===== User ===== */
+.user-card {
+    max-width: 50rem;
+}
+
+.img-user {
+    max-width: 8rem;
+}
