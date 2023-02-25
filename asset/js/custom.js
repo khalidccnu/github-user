@@ -30,6 +30,8 @@ let getUserDetails = username => {
 let displayUser = user => {
     let userArea = document.querySelector("#user .container");
     let userCard = document.createElement("div");
+    let date = new Date(user.created_at);
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     userCard.classList.add("user-card", "card", "mt-4", "mx-auto");
     userCard.innerHTML = `
@@ -46,7 +48,7 @@ let displayUser = user => {
                         <h5 class="card-title mb-0">${user.name}</h5>
                         <small>${user.login}</small>
                     </div>
-                    <div>Joined ${user.created_at}</div>
+                    <div>Joined ${date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear()}</div>
                 </div>
                 <p class="card-text mt-3">${user.bio}</p>
                 <div class="card bg-secondary-subtle">
