@@ -1,8 +1,16 @@
-let userArea = document.querySelector("#user .container");
+let userArea = document.querySelector("#user .container:last-child");
+
+// load spinner
+let spinner = isLoad => {
+    if (isLoad === true) document.querySelector(".spinner").classList.remove("d-none");
+    else document.querySelector(".spinner").classList.add("d-none");
+}
 
 // check username valid or not
 let isValid = username => {
     if (username.trim() === "" || !username.charAt(0).match(/[a-z]/)) {
+        spinner(false);
+
         document.querySelector("#search-warning").classList.remove("d-none");
 
         return false;
@@ -25,6 +33,7 @@ let isExist = obj => {
         alert.style.maxWidth = "30rem";
         alert.innerText = "No user was found to match your search.";
 
+        spinner(false);
         userArea.appendChild(alert);
 
         return false;
@@ -108,13 +117,14 @@ let displayUser = user => {
     </div>
     `;
 
-    userArea.innerHTML = "";
+    spinner(false);
     userArea.appendChild(userCard);
 }
 
 // search user
 document.getElementById("search-form").addEventListener("submit", async e => {
     e.preventDefault();
+    spinner(true);
 
     let username = document.getElementById("username").value.toLowerCase();
     let validUsername = isValid(username);
